@@ -79,45 +79,6 @@ export const DARK_COLORS = {
 // Default to light theme
 export const COLORS = LIGHT_COLORS;
 
-// Dark Mode Colors
-export const DARK_COLORS = {
-  primary: '#3B82F6',
-  secondary: '#10B981',
-  tertiary: '#F59E0B',
-  success: '#10B981',
-  warning: '#F59E0B',
-  danger: '#EF4444',
-  background: '#0F172A',
-  backgroundLight: '#1E293B',
-  white: '#FFFFFF',
-  black: '#000000',
-  cardBg: '#1E293B',
-  accent: {
-    blue: '#3B82F6',
-    green: '#10B981',
-    orange: '#F59E0B',
-    red: '#EF4444',
-    purple: '#8B5CF6',
-    pink: '#EC4899',
-    cyan: '#06B6D4',
-  },
-  gray: {
-    50: '#1E293B',
-    100: '#334155',
-    200: '#475569',
-    300: '#64748B',
-    400: '#94A3B8',
-    500: '#CBD5E1',
-    600: '#E2E8F0',
-    700: '#F1F5F9',
-    800: '#F8FAFC',
-    900: '#FFFFFF',
-  },
-};
-
-// Helper function to get colors based on theme
-export const getColors = (isDark: boolean) => isDark ? DARK_COLORS : COLORS;
-
 export const CATEGORY_COLORS: Record<string, string> = {
   Food: '#EF4444',
   Transport: '#3B82F6',
