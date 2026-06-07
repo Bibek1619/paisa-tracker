@@ -1,19 +1,36 @@
-// Custom hook for managing budgets
+// Custom hook for managing budgets with Firebase Firestore
 
 import { useState, useEffect, useCallback } from 'react';
 import { Budget } from '../types';
+import { useAuth } from '../contexts/AuthContext';
 import * as storage from '../storage';
+import {
+  getBudgetsFromFirestore,
+  addBudgetToFirestore,
+  updateBudgetInFirestore,
+  deleteBudgetFromFirestore,
+} from '../services/firestoreService';
 
 export const useBudgets = () => {
   const [budgets, setBudgets] = useState<Budget[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { user, isAuthenticated } = useAuth();
 
   const loadBudgets = useCallback(async () => {
     try {
       setLoading(true);
-      const data = await storage.getBudgets();
-      setBudgets(data);
+      
+      if (isAuthenticated && user) {
+        // Load from Firestore if user is authenticated
+        const data = await getBudgetsFromFirestore(user.uid);
+        setBudgets(data);
+      } else {
+        // Load from AsyncStorage if not authenticated (demo mode)
+        const data = await storage.getBudgets();
+        setBudgets(data);
+      }
+      
       setError(null);
     } catch (err) {
       setError('Failed to load budgets');
@@ -21,7 +38,7 @@ export const useBudgets = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [isAuthenticated, user]);
 
   useEffect(() => {
     loadBudgets();
@@ -29,23 +46,54 @@ export const useBudgets = () => {
 
   const addOrUpdateBudget = async (budget: Budget) => {
     try {
-      await storage.addOrUpdateBudget(budget);
-      const existingIndex = budgets.findIndex(
-        (b) =>
-          b.category === budget.category &&
-          b.month === budget.month &&
-          b.year === budget.year
-      );
+      if (isAuthenticated && user) {
+        // Check if budget already exists
+        const existingIndex = budgets.findIndex(
+          (b) =>
+            b.category === budget.category &&
+            b.month === budget.month &&
+            b.year === budget.year
+        );
 
-      if (existingIndex >= 0) {
-        setBudgets((prev) => {
-          const updated = [...prev];
-          updated[existingIndex] = budget;
-          return updated;
-        });
+        if (existingIndex >= 0 && budgets[existingIndex].id) {
+          // Update existing budget in Firestore
+          const { id, ...budgetData } = budget;
+          await updateBudgetInFirestore(budgets[existingIndex].id, budgetData);
+          
+          setBudgets((prev) => {
+            const updated = [...prev];
+            updated[existingIndex] = { ...budget, id: budgets[existingIndex].id };
+            return updated;
+          });
+        } else {
+          // Add new budget to Firestore
+          const { id, ...budgetData } = budget;
+          const newId = await addBudgetToFirestore(user.uid, budgetData);
+          const newBudget = { ...budget, id: newId };
+          setBudgets((prev) => [...prev, newBudget]);
+        }
       } else {
-        setBudgets((prev) => [...prev, budget]);
+        // AsyncStorage (demo mode)
+        await storage.addOrUpdateBudget(budget);
+        
+        const existingIndex = budgets.findIndex(
+          (b) =>
+            b.category === budget.category &&
+            b.month === budget.month &&
+            b.year === budget.year
+        );
+
+        if (existingIndex >= 0) {
+          setBudgets((prev) => {
+            const updated = [...prev];
+            updated[existingIndex] = budget;
+            return updated;
+          });
+        } else {
+          setBudgets((prev) => [...prev, budget]);
+        }
       }
+      
       return true;
     } catch (err) {
       setError('Failed to save budget');
@@ -56,7 +104,14 @@ export const useBudgets = () => {
 
   const removeBudget = async (id: string) => {
     try {
-      await storage.deleteBudget(id);
+      if (isAuthenticated && user) {
+        // Delete from Firestore
+        await deleteBudgetFromFirestore(id);
+      } else {
+        // Delete from AsyncStorage (demo mode)
+        await storage.deleteBudget(id);
+      }
+      
       setBudgets((prev) => prev.filter((b) => b.id !== id));
       return true;
     } catch (err) {
