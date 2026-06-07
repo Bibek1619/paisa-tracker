@@ -46,14 +46,14 @@ export const CATEGORY_ICONS: Record<ExpenseCategory, string> = {
 };
 
 export const CATEGORY_COLORS: Record<ExpenseCategory, string> = {
-  Food: '#FF6B6B',
-  Transport: '#4ECDC4',
-  Rent: '#45B7D1',
-  Utilities: '#FFA07A',
-  Entertainment: '#98D8C8',
-  Healthcare: '#F06292',
-  Education: '#7986CB',
-  Shopping: '#FFD93D',
-  Investment: '#6BCF7F',
-  Other: '#95A5A6',
+  Food: '#EF4444',        // Red
+  Transport: '#3B82F6',   // Blue
+  Rent: '#8B5CF6',        // Purple
+  Utilities: '#F59E0B',   // Orange
+  Entertainment: '#EC4899', // Pink
+  Healthcare: '#10B981',  // Green
+  Education: '#2563EB',   // Blue
+  Shopping: '#F97316',    // Orange
+  Investment: '#10B981',  // Green
+  Other: '#6B7280',       // Gray
 };

@@ -1,27 +1,33 @@
 export const colors = {
   light: {
-    primary: '#4CAF50',
+    primary: '#2563EB',      // Blue from image
+    secondary: '#10B981',    // Green from image
+    tertiary: '#F59E0B',     // Orange/Yellow from image
     background: '#FFFFFF',
     surface: '#F5F5F5',
-    text: '#000000',
-    textSecondary: '#666666',
-    border: '#E0E0E0',
-    error: '#F44336',
-    success: '#4CAF50',
-    warning: '#FF9800',
-    info: '#2196F3',
+    text: '#1F2937',         // Darker text
+    textSecondary: '#6B7280',
+    border: '#E5E7EB',
+    error: '#EF4444',
+    success: '#10B981',      // Green
+    warning: '#F59E0B',      // Orange
+    info: '#2563EB',         // Blue
+    accent: '#8B5CF6',       // Purple accent
   },
   dark: {
-    primary: '#4CAF50',
-    background: '#121212',
-    surface: '#1E1E1E',
-    text: '#FFFFFF',
-    textSecondary: '#AAAAAA',
-    border: '#333333',
-    error: '#F44336',
-    success: '#4CAF50',
-    warning: '#FF9800',
-    info: '#2196F3',
+    primary: '#3B82F6',      // Lighter blue for dark mode
+    secondary: '#10B981',    // Green
+    tertiary: '#F59E0B',     // Orange
+    background: '#111827',   // Dark background
+    surface: '#1F2937',      // Dark surface
+    text: '#F9FAFB',
+    textSecondary: '#9CA3AF',
+    border: '#374151',
+    error: '#EF4444',
+    success: '#10B981',
+    warning: '#F59E0B',
+    info: '#3B82F6',
+    accent: '#8B5CF6',
   },
 };
 

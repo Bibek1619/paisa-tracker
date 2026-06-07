@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, variant = 'primary' }) 
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#2563EB',
     padding: 16,
     borderRadius: 8,
     alignItems: 'center',
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   secondary: {
     backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: '#4CAF50',
+    borderColor: '#2563EB',
   },
   text: {
     color: '#fff',
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   secondaryText: {
-    color: '#4CAF50',
+    color: '#2563EB',
   },
 });
 
