@@ -1,305 +1,198 @@
-# 💰 PaisaTrack Nepal
+# 💰 PaisaTrack - Expense Tracker for Nepal
 
-A modern, production-ready React Native mobile application for personal finance management, specifically designed for Nepalese users.
-
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-lightgrey.svg)
-
----
-
-## 🎯 Features
-
-### 📊 **Dashboard**
-- Monthly budget overview with real-time tracking
-- Today's spending summary
-- Category breakdown with interactive pie charts
-- Spending trends and analytics
-- Quick expense entry with FAB button
-
-### 💳 **Transactions**
-- Separate expense and income tracking
-- Search and filter by category
-- 10 expense categories (Food, Transport, Rent, etc.)
-- 5 payment methods (Cash, eSewa, Khalti, Bank, Fonepay)
-- Detailed transaction cards with payment method icons
-
-### 📈 **Reports & Analytics**
-- Monthly financial summary
-- Category-wise expense breakdown
-- 6-month spending trends
-- AI-generated insights
-- Key metrics (highest category, avg daily expense, savings rate)
-
-### 💰 **Budget Management**
-- Set overall and category-specific budgets
-- Visual progress bars with color coding
-- Budget alerts (80%, 90%, 100% usage)
-- Remaining/exceeded amount tracking
-
-### 👤 **Profile & Settings**
-- **Dark/Light mode toggle** 🌙☀️
-- User profile with avatar
-- Export data functionality
-- App version and information
-
-### 🇳🇵 **Nepal-Specific Features**
-- NPR currency (Rs.)
-- Local payment methods: eSewa, Khalti, Fonepay
-- Designed for Nepalese users
-- Bilingual ready (English/Nepali)
-
----
-
-## 🌙 Dark Mode
-
-**Fully functional dark/light theme toggle!**
-
-- Tap the moon/sun icon at top-right
-- Instant theme switching
-- Persists across app restarts
-- All screens support both themes
-- Easy on the eyes in any lighting
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
-- Expo CLI (optional)
-- Android Studio or Xcode (for emulators)
-
-### Installation
-
-1. **Clone the repository:**
-```bash
-git clone https://github.com/Bibek1619/paisa-tracker.git
-cd paisa-tracker
-```
-
-2. **Install dependencies:**
-```bash
-npm install
-```
-
-3. **Start development server:**
-```bash
-npm start
-```
-
-4. **Run on device:**
-   - **Android**: `npm run android` or scan QR with Expo Go
-   - **iOS**: `npm run ios` (macOS only) or scan QR with Expo Go
-   - **Web**: `npm run web`
-
----
-
-## 📱 Screenshots
-
-### Light Mode
-- Dashboard with monthly overview
-- Category breakdown charts
-- Budget tracking with progress bars
-
-### Dark Mode
-- Full dark theme support
-- Eye-friendly color palette
-- All features work seamlessly
-
----
-
-## 🛠️ Tech Stack
-
-- **Framework**: React Native with Expo SDK 56
-- **Language**: TypeScript (strict mode)
-- **Navigation**: React Navigation (Bottom Tabs)
-- **UI Components**: React Native Paper
-- **Storage**: AsyncStorage (local persistence)
-- **Charts**: React Native Chart Kit
-- **Icons**: Ionicons from @expo/vector-icons
-- **State Management**: Custom hooks
-- **Theme**: Context API with dark/light modes
-
----
+A complete expense tracking mobile application built with React Native and Firebase, designed specifically for Nepalese users.
 
 ## 📁 Project Structure
 
 ```
-PaisaTrack/
-├── src/
-│   ├── components/          # Reusable UI components
-│   │   ├── cards/
-│   │   ├── charts/
-│   │   ├── common/
-│   │   └── forms/
-│   ├── contexts/            # Theme context for dark/light mode
-│   ├── constants/           # Colors, theme, data constants
-│   ├── hooks/               # Custom React hooks
-│   ├── navigation/          # Navigation configuration
-│   ├── screens/             # Main app screens (5)
-│   ├── services/            # Business logic & analytics
-│   ├── storage/             # AsyncStorage wrapper
-│   ├── types/               # TypeScript definitions
-│   └── utils/               # Helper functions & seed data
-├── assets/                  # Images, fonts, icons
-├── App.tsx                  # Root component
-└── package.json
+expence-tracker/
+├── PaisaTrack/              # Frontend - React Native Mobile App
+│   ├── src/                 # Source code
+│   │   ├── components/      # Reusable UI components
+│   │   ├── screens/         # App screens
+│   │   ├── services/        # Firebase backend services
+│   │   ├── contexts/        # React contexts (Auth, Theme)
+│   │   ├── hooks/           # Custom React hooks
+│   │   └── ...
+│   ├── App.tsx              # Main app entry
+│   ├── package.json
+│   └── README.md            # Frontend documentation
+│
+└── (Future: backend, docs, deployment folders)
 ```
 
----
+## ✨ Features
 
-## 🎨 Design
+- 📊 **Track Expenses** - 10 categories (Food, Transport, Rent, etc.)
+- 💵 **Track Income** - Multiple income sources
+- 📈 **Budget Management** - Set and monitor monthly budgets
+- 📉 **Reports & Analytics** - Charts and spending insights
+- 🔐 **User Authentication** - Firebase login/register
+- ☁️ **Cloud Sync** - Firestore database
+- 🇳🇵 **Nepal-Specific** - NPR currency, eSewa, Khalti, Fonepay
+- 🌙 **Dark Mode** - Light/Dark theme toggle (UI ready)
 
-### Color Palette
-- **Primary**: #2563EB (Blue)
-- **Success**: #10B981 (Green)
-- **Warning**: #F59E0B (Orange)
-- **Danger**: #EF4444 (Red)
-- **Background**: #F5F7FA (Light) / #0F172A (Dark)
+## 🚀 Quick Start
 
-### Key Design Principles
-- Material Design 3
-- Clean, modern interface
-- Intuitive navigation
-- Responsive layout
-- Accessibility-friendly
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+- Expo CLI
+- Android Studio (for Android) or Xcode (for iOS)
 
----
+### Installation
 
-## 💾 Data Management
+```bash
+# Navigate to frontend folder
+cd PaisaTrack
 
-### Local Storage
-- All data stored securely using AsyncStorage
-- Persists between app restarts
-- Export functionality for backups
-- Ready for cloud sync integration
+# Install dependencies
+npm install
 
-### Sample Data
-- App includes seed data for testing
-- Realistic expense and income entries
-- Pre-configured budgets
-- Multiple categories and payment methods
+# Start the development server
+npm start
+```
 
----
+### Run on Device
 
-## 📊 Features in Detail
+- **Android:** Scan QR code with Expo Go app
+- **iOS:** Scan QR code with Camera app (opens in Expo Go)
+- **Web:** Press `w` in terminal
 
-### Expense Categories (10)
-1. 🍔 Food
-2. 🚗 Transport
-3. 🏠 Rent
-4. 🛍️ Shopping
-5. 📚 Education
-6. 🏥 Health
-7. 🎬 Entertainment
-8. 📱 Mobile Recharge
-9. 🌐 Internet
-10. 📦 Others
+## 🔥 Firebase Setup (Optional)
 
-### Payment Methods (5)
-1. 💵 Cash
-2. 💳 eSewa
-3. 💳 Khalti
-4. 🏦 Bank
-5. 💳 Fonepay
+The app works in **demo mode** without Firebase. To enable cloud features:
 
-### Income Sources (5)
-1. 💼 Salary
-2. 💻 Freelance
-3. 🏢 Business
-4. 🎁 Gift
-5. 📦 Other
+1. Create Firebase project at https://console.firebase.google.com/
+2. Enable Authentication (Email/Password)
+3. Create Firestore Database
+4. Copy Firebase config
+5. Update `PaisaTrack/src/config/firebase.ts`
 
----
+**Detailed guide:** See `PaisaTrack/QUICKSTART_FIREBASE.md`
 
-## 🔮 Future Enhancements
+## 🛠️ Tech Stack
 
-- [ ] Firebase authentication
-- [ ] Cloud data synchronization
-- [ ] Multi-currency support
-- [ ] Recurring transactions
-- [ ] Bill reminders
-- [ ] Receipt photo attachments
-- [ ] Export to PDF/Excel
-- [ ] Biometric authentication
-- [ ] Shared budgets with family
-- [ ] Expense splitting
+### Frontend
+- **React Native** - Cross-platform mobile framework
+- **Expo** - Development platform
+- **TypeScript** - Type safety
+- **React Navigation** - Navigation
+- **React Native Paper** - UI components
+- **React Native Chart Kit** - Charts
 
----
+### Backend
+- **Firebase Authentication** - User login/register
+- **Firestore** - NoSQL database
+- **AsyncStorage** - Local storage (demo mode)
+
+## 📱 Screens
+
+1. **Dashboard** - Overview, budget, today's spending, charts
+2. **Transactions** - List of all expenses and income
+3. **Reports** - Analytics, charts, spending insights
+4. **Budget** - Set and manage budgets
+5. **Profile** - User settings, logout
+6. **Login/Register** - Authentication
+
+## 📊 Database Schema
+
+### Collections
+
+- **users** - User profiles
+- **expenses** - User expenses
+- **income** - User income
+- **budgets** - Budget settings
+
+See `PaisaTrack/BACKEND_PLAN.md` for detailed schema.
 
 ## 🧪 Testing
 
-### Run Tests
 ```bash
-npm test
+cd PaisaTrack
+npm start
 ```
 
-### Test Dark Mode
-1. Open the app
-2. Look at top-right corner
-3. Tap moon icon 🌙
-4. Watch entire app switch themes!
-5. Tap sun icon ☀️ to switch back
+**Demo Mode:**
+- App loads with seed data
+- No login required
+- Data stored locally
 
-### Test Features
-- Add new expenses/income
-- Set budgets and track progress
-- View reports and analytics
-- Search and filter transactions
-- Export data
+**Firebase Mode:**
+- Login screen appears
+- User authentication
+- Cloud data sync
 
----
+## 📚 Documentation
+
+All documentation is in the `PaisaTrack/` folder:
+
+- **START_HERE.md** - Quick start guide
+- **QUICKSTART_FIREBASE.md** - Firebase setup (10 min)
+- **BACKEND_COMPLETE.md** - Backend implementation details
+- **FIREBASE_SETUP.md** - Detailed Firebase guide
+- **HOW_TO_TEST.md** - Testing guide
+
+## 🎯 Project Status
+
+- ✅ Frontend: 100% Complete
+- ✅ Backend Integration: 100% Complete
+- ✅ Firebase Auth: Ready
+- ✅ Firestore Database: Ready
+- ⚠️ Needs: Your Firebase credentials (10 min setup)
+
+## 🚀 Deployment
+
+### Build for Production
+
+```bash
+cd PaisaTrack
+
+# Android
+npx expo build:android
+
+# iOS
+npx expo build:ios
+```
+
+### Expo EAS Build (Recommended)
+
+```bash
+# Install EAS CLI
+npm install -g eas-cli
+
+# Configure
+eas build:configure
+
+# Build
+eas build --platform android
+eas build --platform ios
+```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
+This is a personal project, but suggestions and feedback are welcome!
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
+MIT License - see `PaisaTrack/LICENSE`
 
 ## 👨‍💻 Author
 
-**Bibek**
+Built with ❤️ for Nepalese users
 
-- GitHub: [@Bibek1619](https://github.com/Bibek1619)
-- Repository: [paisa-tracker](https://github.com/Bibek1619/paisa-tracker)
+## 🔗 Links
 
----
-
-## 🙏 Acknowledgments
-
-- Designed for Nepalese users with local payment methods
-- Inspired by modern expense tracking apps
-- Built with React Native and Expo
-- UI design inspired by Material Design 3
-
----
+- **GitHub:** https://github.com/Bibek1619/paisa-tracker
+- **Demo:** Run `npm start` in PaisaTrack folder
 
 ## 📞 Support
 
-For support, please open an issue in the GitHub repository or contact through GitHub.
+For questions or issues:
+1. Check documentation in `PaisaTrack/` folder
+2. Read `PaisaTrack/START_HERE.md`
+3. Check Firebase setup guide
 
 ---
 
-## ⭐ Show Your Support
-
-Give a ⭐️ if this project helped you!
-
----
-
-**Made with ❤️ for Nepal** 🇳🇵
-
-**Track Your Paisa, Achieve Your Goals!** 💰✨
+**Ready to track your paisa? Get started in `PaisaTrack/` folder!** 🚀
